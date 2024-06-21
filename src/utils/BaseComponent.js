@@ -10,7 +10,11 @@ export default class BaseComponent {
   }
 
   appendTo(parent) {
-    parent.append(this.node);
+    if (parent instanceof BaseComponent) {
+      parent.node.append(this.node);
+    } else {
+      parent.append(this.node);
+    }
   }
 
   remove() {

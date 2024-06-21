@@ -1,0 +1,16 @@
+.modalBackground {
+  z-index: 1;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  transition: 0.3s;
+  background-color: aqua;
+
+  &.close {
+    z-index: -1;
+    opacity: 0;
+  }
+}

@@ -1,0 +1,10 @@
+.list {
+  list-style: none;
+}
+
+.link {
+
+  &:hover {
+    cursor: pointer;
+  }
+}
