@@ -1,11 +1,14 @@
 import BaseComponent from '../../utils/baseComponent';
 
+import burger from './burger.svg';
+
 import classes from './header.module.scss';
 
 export class Header extends BaseComponent {
   constructor(parent, modal) {
     super({ tag: 'nav', className: classes.header, parent });
     this.modal = modal;
+
     this.#init();
   }
 
@@ -22,5 +25,13 @@ export class Header extends BaseComponent {
     });
 
     ul.appendTo(this);
+    this.#addBurger();
+  }
+
+  #addBurger() {
+    const img = new BaseComponent({ tag: 'img', parent: this });
+    img.node.src = burger;
+
+    img.appendTo(this);
   }
 }
