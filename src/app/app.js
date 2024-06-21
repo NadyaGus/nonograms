@@ -1,8 +1,8 @@
+import BaseComponent from '../utils/BaseComponent';
 import classes from './app.module.scss';
 
-export const App = () => {
-  const app = document.createElement('div');
-  app.className = classes.app;
-
-  return app;
-};
+export class App extends BaseComponent {
+  constructor() {
+    super({ className: classes.app });
+  }
+}
