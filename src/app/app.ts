@@ -1,6 +1,6 @@
-import Modal from '../utils/baseModal';
-import BaseComponent from '../utils/baseComponent';
-import { Header } from '../components/header/header';
+import Modal from '@/utils/baseModal';
+import BaseComponent from '@/utils/baseComponent';
+import { Header } from '@/components/header/header';
 
 import classes from './app.module.scss';
 

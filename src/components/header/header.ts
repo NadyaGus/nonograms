@@ -1,5 +1,5 @@
 import type Modal from '@/utils/baseModal';
-import BaseComponent from '../../utils/baseComponent';
+import BaseComponent from '@/utils/baseComponent';
 
 import burger from './burger.svg';
 
