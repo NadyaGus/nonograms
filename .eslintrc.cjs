@@ -3,7 +3,13 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['eslint:recommended', 'plugin:import/recommended', 'airbnb-base', 'prettier'],
+  extends: [
+    'eslint:recommended',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
+    'plugin:@typescript-eslint/recommended-type-checked',
+    'prettier',
+  ],
   overrides: [
     {
       env: {
@@ -15,11 +21,19 @@ module.exports = {
       },
     },
   ],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
+    project: ['tsconfig.json'],
   },
   rules: {
     'import/prefer-default-export': 'off',
+  },
+  settings: {
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
+    'import/resolver': {
+      typescript: true,
+    },
   },
 };

@@ -1,3 +1,4 @@
+import Modal from '@/utils/baseModal';
 import BaseComponent from '../../utils/baseComponent';
 
 import burger from './burger.svg';
@@ -5,14 +6,17 @@ import burger from './burger.svg';
 import classes from './header.module.scss';
 
 export class Header extends BaseComponent {
-  constructor(parent, modal) {
+  private modal: Modal;
+
+  constructor(parent: BaseComponent, modal: Modal) {
     super({ tag: 'nav', className: classes.header, parent });
     this.modal = modal;
 
-    this.#init();
+    this.init();
+    this.appendTo(parent);
   }
 
-  #init() {
+  init() {
     const ul = new BaseComponent({ tag: 'ul', className: classes.list });
 
     // TODO: add modals here
@@ -25,13 +29,6 @@ export class Header extends BaseComponent {
     });
 
     ul.appendTo(this);
-    this.#addBurger();
-  }
-
-  #addBurger() {
-    const img = new BaseComponent({ tag: 'img', parent: this });
-    img.node.src = burger;
-
-    img.appendTo(this);
+    this.addImage(burger, classes.burger!, this);
   }
 }

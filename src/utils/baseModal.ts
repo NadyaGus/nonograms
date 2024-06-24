@@ -3,39 +3,40 @@ import BaseComponent from './baseComponent';
 import classes from './modal.module.scss';
 
 export default class Modal extends BaseComponent {
-  constructor(parent) {
+  protected modal = this.createModal();
+
+  constructor(parent: BaseComponent) {
     super({ tag: 'div', className: classes.modalBackground, parent });
-    this.modal = this.#createModal();
-    this.addClass(classes.close);
+    this.addClass(classes.close!);
   }
 
-  #createModal() {
+  createModal() {
     const modal = new BaseComponent({
       tag: 'div',
       className: 'modal',
-      parent: this.node,
+      parent: this,
     });
-    this.#createCloseButton(modal);
+    this.createCloseButton(modal);
 
     return modal;
   }
 
-  #createCloseButton(parentNode) {
+  createCloseButton(parent: BaseComponent) {
     const button = new BaseComponent({
       tag: 'button',
-      className: classes.closeButton,
-      parent: parentNode,
+      className: classes.closeButton!,
+      parent,
     });
     button.setTextContent('CLOSE');
 
     const close = () => {
-      this.addClass(classes.close);
+      this.addClass(classes.close!);
     };
 
     button.addListener('click', close);
   }
 
   openModal() {
-    this.removeClass(classes.close);
+    this.removeClass(classes.close!);
   }
 }
