@@ -10,7 +10,7 @@ export default class Modal extends BaseComponent {
     this.addClass(classes.close!);
   }
 
-  createModal() {
+  createModal(): BaseComponent {
     const modal = new BaseComponent({
       tag: 'div',
       className: 'modal',
@@ -21,7 +21,7 @@ export default class Modal extends BaseComponent {
     return modal;
   }
 
-  createCloseButton(parent: BaseComponent) {
+  createCloseButton(parent: BaseComponent): void {
     const button = new BaseComponent({
       tag: 'button',
       className: classes.closeButton!,
@@ -29,14 +29,14 @@ export default class Modal extends BaseComponent {
     });
     button.setTextContent('CLOSE');
 
-    const close = () => {
+    const close = (): void => {
       this.addClass(classes.close!);
     };
 
     button.addListener('click', close);
   }
 
-  openModal() {
+  openModal(): void {
     this.removeClass(classes.close!);
   }
 }

@@ -1,4 +1,4 @@
-import Modal from '@/utils/baseModal';
+import type Modal from '@/utils/baseModal';
 import BaseComponent from '../../utils/baseComponent';
 
 import burger from './burger.svg';
@@ -16,7 +16,7 @@ export class Header extends BaseComponent {
     this.appendTo(parent);
   }
 
-  init() {
+  init(): void {
     const ul = new BaseComponent({ tag: 'ul', className: classes.list });
 
     // TODO: add modals here

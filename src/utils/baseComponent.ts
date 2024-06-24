@@ -15,7 +15,7 @@ export default class BaseComponent {
     props.parent ? this.appendTo(props.parent) : null;
   }
 
-  appendTo(parent: BaseComponent | HTMLElement) {
+  appendTo(parent: BaseComponent | HTMLElement): void {
     if (parent instanceof BaseComponent) {
       parent.elem.append(this.elem);
     } else {
@@ -23,35 +23,35 @@ export default class BaseComponent {
     }
   }
 
-  remove() {
+  remove(): void {
     this.elem.remove();
   }
 
-  addListener<K extends keyof HTMLElementEventMap>(event: K, listener: (event: HTMLElementEventMap[K]) => void) {
+  addListener<K extends keyof HTMLElementEventMap>(event: K, listener: (event: HTMLElementEventMap[K]) => void): void {
     this.elem.addEventListener(event, listener);
   }
 
-  addClass(...classNames: string[]) {
+  addClass(...classNames: string[]): void {
     this.elem.classList.add(...classNames);
   }
 
-  removeClass(...classNames: string[]) {
+  removeClass(...classNames: string[]): void {
     this.elem.classList.remove(...classNames);
   }
 
-  setAttribute(name: string, value: string) {
+  setAttribute(name: string, value: string): void {
     this.elem.setAttribute(name, value);
   }
 
-  removeAttribute(name: string) {
+  removeAttribute(name: string): void {
     this.elem.removeAttribute(name);
   }
 
-  setTextContent(text: string) {
+  setTextContent(text: string): void {
     this.elem.textContent = text;
   }
 
-  addImage(src: string, className: string, parent: BaseComponent) {
+  addImage(src: string, className: string, parent: BaseComponent): void {
     const img = document.createElement('img');
     img.src = src;
     img.className = className;
