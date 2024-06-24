@@ -1,16 +1,34 @@
-import type Modal from '@/utils/baseModal';
 import BaseComponent from '@/utils/baseComponent';
+import type { AboutModal } from '../modals/about';
+import type { ContinueModal } from '../modals/continue';
+import type { ScoreModal } from '../modals/score';
+import type { SaveModal } from '../modals/save';
 
 import burger from './burger.svg';
 
 import classes from './header.module.scss';
 
 export class Header extends BaseComponent {
-  private modal: Modal;
+  private scoreModal: ScoreModal;
 
-  constructor(parent: BaseComponent, modal: Modal) {
+  private saveModal: SaveModal;
+
+  private continueModal: ContinueModal;
+
+  private aboutModal: AboutModal;
+
+  constructor(
+    parent: BaseComponent,
+    scoreModal: ScoreModal,
+    saveModal: SaveModal,
+    continueModal: ContinueModal,
+    aboutModal: AboutModal,
+  ) {
     super({ tag: 'nav', className: classes.header, parent });
-    this.modal = modal;
+    this.scoreModal = scoreModal;
+    this.saveModal = saveModal;
+    this.continueModal = continueModal;
+    this.aboutModal = aboutModal;
 
     this.init();
     this.appendTo(parent);
@@ -19,12 +37,12 @@ export class Header extends BaseComponent {
   private init(): void {
     const ul = new BaseComponent({ tag: 'ul', className: classes.list });
 
-    // TODO: add modals here
-    ['score', 'save', 'continue', 'about'].forEach((name) => {
+    const modals = [this.scoreModal, this.saveModal, this.continueModal, this.aboutModal];
+    modals.forEach((modal) => {
       const link = new BaseComponent({ tag: 'li', className: classes.link, parent: ul });
-      link.setTextContent(name);
+      link.setTextContent(modal.name);
 
-      link.subscribe('openModal', () => this.modal.openModal());
+      link.subscribe('openModal', () => modal.openModal());
       link.addListener('click', () => {
         link.emit('openModal');
       });

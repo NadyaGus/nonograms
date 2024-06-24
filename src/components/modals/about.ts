@@ -1,11 +1,11 @@
 import Modal from '@/utils/baseModal';
 
-export class ScoreModal extends Modal {
+export class AboutModal extends Modal {
   public name: string;
 
   constructor() {
     super();
-    this.name = 'score';
+    this.name = 'about';
     this.addTitle(this.name);
   }
 }

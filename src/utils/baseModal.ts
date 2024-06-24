@@ -5,8 +5,8 @@ import classes from './modal.module.scss';
 export default class Modal extends BaseComponent {
   protected modal = this.createModal();
 
-  constructor(parent: BaseComponent) {
-    super({ tag: 'div', className: classes.modalBackground, parent });
+  constructor() {
+    super({ tag: 'div', className: classes.modalBackground });
     this.addClass(classes.close!);
   }
 
@@ -34,6 +34,13 @@ export default class Modal extends BaseComponent {
     };
 
     button.addListener('click', close);
+  }
+
+  protected addTitle(title: string): void {
+    const header = new BaseComponent({ tag: 'h2', className: classes.title, parent: this.modal });
+    header.setTextContent(title);
+
+    header.appendTo(this.modal);
   }
 
   public openModal(): void {
