@@ -33,6 +33,11 @@ export class Header extends BaseComponent {
     });
 
     ul.appendTo(this);
-    this.addImage(burger, classes.burger!, this);
+    this.addBurger();
+  }
+
+  private addBurger(): void {
+    const icon = this.addImage(burger, classes.burger!, this);
+    icon.addListener('click', () => icon.toggleClass(classes.open!));
   }
 }

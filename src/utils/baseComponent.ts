@@ -48,6 +48,10 @@ export default class BaseComponent extends EventEmitter {
     this.elem.classList.remove(...classNames);
   }
 
+  public toggleClass(className: string): void {
+    this.elem.classList.toggle(className);
+  }
+
   public setAttribute(name: string, value: string): void {
     this.elem.setAttribute(name, value);
   }
@@ -60,12 +64,14 @@ export default class BaseComponent extends EventEmitter {
     this.elem.textContent = text;
   }
 
-  public addImage(src: string, className: string, parent: BaseComponent): void {
+  public addImage(src: string, className: string, parent: BaseComponent): BaseComponent {
     const img = document.createElement('img');
     img.src = src;
     img.className = className;
 
     parent.elem.append(img);
     this.img = img;
+
+    return this;
   }
 }

@@ -1,7 +1,13 @@
+@import '../global.module';
+
 .app {
   position: fixed;
+
   display: flex;
   flex-direction: column;
+
   width: 100vw;
   height: 100vh;
+
+  background-color: $color-bg;
 }

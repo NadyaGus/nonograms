@@ -1,0 +1,13 @@
+$font-primary: "Acme", sans-serif;
+$font-accent: "Luckiest Guy", cursive;
+$color-bg: #ffe45f;
+$color-secondary: #f99600;
+$color-hover: #ffbf5f;
+$gap: 0.5rem;
+$breakpoint-s: 36rem;
+$breakpoint-m: 48rem;
+
+body {
+  font-family: $font-primary;
+  font-size: 16px;
+}
