@@ -1,14 +1,17 @@
+import { EventEmitter } from './event-emitter';
+
 type Props = {
   tag: string;
   className?: string;
   parent?: BaseComponent;
 };
 
-export default class BaseComponent {
+export default class BaseComponent extends EventEmitter {
   public elem: HTMLElement;
   public img?: HTMLImageElement;
 
   constructor(props: Props) {
+    super();
     const elem = document.createElement(props.tag);
     this.elem = elem;
     props.className ? (elem.className = props.className) : null;

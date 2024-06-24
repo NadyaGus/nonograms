@@ -23,7 +23,11 @@ export class Header extends BaseComponent {
     ['score', 'save', 'continue', 'about'].forEach((name) => {
       const link = new BaseComponent({ tag: 'li', className: classes.link, parent: ul });
       link.setTextContent(name);
-      link.addListener('click', () => this.modal.openModal());
+
+      link.subscribe('openModal', () => this.modal.openModal());
+      link.addListener('click', () => {
+        link.emit('openModal');
+      });
 
       return link;
     });
