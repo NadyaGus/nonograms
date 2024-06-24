@@ -8,53 +8,59 @@ type Props = {
 
 export default class BaseComponent extends EventEmitter {
   public elem: HTMLElement;
+
   public img?: HTMLImageElement;
 
   constructor(props: Props) {
     super();
     const elem = document.createElement(props.tag);
     this.elem = elem;
-    props.className ? (elem.className = props.className) : null;
-    props.parent ? this.appendTo(props.parent) : null;
+    elem.className = props.className || '';
+    this.appendTo(props.parent);
   }
 
-  appendTo(parent: BaseComponent | HTMLElement): void {
-    if (parent instanceof BaseComponent) {
-      parent.elem.append(this.elem);
-    } else {
-      parent.append(this.elem);
+  public appendTo(parent: BaseComponent | HTMLElement | undefined): void {
+    if (parent) {
+      if (parent instanceof BaseComponent) {
+        parent.elem.append(this.elem);
+      } else {
+        parent.append(this.elem);
+      }
     }
   }
 
-  remove(): void {
+  public remove(): void {
     this.elem.remove();
   }
 
-  addListener<K extends keyof HTMLElementEventMap>(event: K, listener: (event: HTMLElementEventMap[K]) => void): void {
+  public addListener<K extends keyof HTMLElementEventMap>(
+    event: K,
+    listener: (event: HTMLElementEventMap[K]) => void,
+  ): void {
     this.elem.addEventListener(event, listener);
   }
 
-  addClass(...classNames: string[]): void {
+  public addClass(...classNames: string[]): void {
     this.elem.classList.add(...classNames);
   }
 
-  removeClass(...classNames: string[]): void {
+  public removeClass(...classNames: string[]): void {
     this.elem.classList.remove(...classNames);
   }
 
-  setAttribute(name: string, value: string): void {
+  public setAttribute(name: string, value: string): void {
     this.elem.setAttribute(name, value);
   }
 
-  removeAttribute(name: string): void {
+  public removeAttribute(name: string): void {
     this.elem.removeAttribute(name);
   }
 
-  setTextContent(text: string): void {
+  public setTextContent(text: string): void {
     this.elem.textContent = text;
   }
 
-  addImage(src: string, className: string, parent: BaseComponent): void {
+  public addImage(src: string, className: string, parent: BaseComponent): void {
     const img = document.createElement('img');
     img.src = src;
     img.className = className;

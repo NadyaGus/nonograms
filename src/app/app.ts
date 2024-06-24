@@ -6,6 +6,7 @@ import classes from './app.module.scss';
 
 export class App extends BaseComponent {
   protected modal: Modal;
+
   protected header: Header;
 
   constructor() {

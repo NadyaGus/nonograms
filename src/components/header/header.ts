@@ -16,7 +16,7 @@ export class Header extends BaseComponent {
     this.appendTo(parent);
   }
 
-  init(): void {
+  private init(): void {
     const ul = new BaseComponent({ tag: 'ul', className: classes.list });
 
     // TODO: add modals here
