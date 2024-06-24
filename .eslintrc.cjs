@@ -27,6 +27,16 @@ module.exports = {
   },
   rules: {
     'import/prefer-default-export': 'off',
+    '@typescript-eslint/consistent-type-exports': 'error',
+    '@typescript-eslint/consistent-type-imports': 'error',
+    '@typescript-eslint/explicit-function-return-type': [
+      'error',
+      {
+        allowExpressions: true,
+      },
+    ],
+    '@typescript-eslint/no-explicit-any': 'error',
+    curly: ['error', 'all'],
   },
   settings: {
     'import/parsers': {
