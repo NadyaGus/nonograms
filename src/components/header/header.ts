@@ -1,4 +1,5 @@
 import BaseComponent from '@/utils/baseComponent';
+import { EVENT_EMITTER } from '@/utils/event-emitter';
 import type { AboutModal } from '../modals/about';
 import type { ContinueModal } from '../modals/continue';
 import type { ScoreModal } from '../modals/score';
@@ -42,9 +43,8 @@ export class Header extends BaseComponent {
       const link = new BaseComponent({ tag: 'li', className: classes.link, parent: ul });
       link.setTextContent(modal.title);
 
-      link.subscribe('openModal', () => modal.openModal());
       link.addListener('click', () => {
-        link.emit('openModal');
+        EVENT_EMITTER.emit(`openModal${modal.title}`);
       });
 
       return link;

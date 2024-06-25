@@ -1,11 +1,7 @@
 type CallBack = () => void;
 
 export class EventEmitter {
-  public emitter: { [key: string]: Set<CallBack> };
-
-  constructor() {
-    this.emitter = {};
-  }
+  private emitter: { [key: string]: Set<CallBack> } = {};
 
   public subscribe(event: string, listener: CallBack): void {
     const listeners = this.emitter[event] ?? new Set<CallBack>();
@@ -31,3 +27,5 @@ export class EventEmitter {
     }
   }
 }
+
+export const EVENT_EMITTER = new EventEmitter();

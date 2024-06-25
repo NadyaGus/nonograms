@@ -1,5 +1,6 @@
 import { BaseButton } from './baseButton';
 import BaseComponent from './baseComponent';
+import { EVENT_EMITTER } from './event-emitter';
 
 import classes from './modal.module.scss';
 
@@ -75,7 +76,7 @@ export default class Modal extends BaseComponent {
       const closeButton = new BaseButton({ text: 'CLOSE', onClick: (): void => this.closeModal() });
       closeButton.appendTo(this.modal);
     } else if (event) {
-      const yesButton = new BaseButton({ text: 'YES', onClick: (): void => this.emit(event) });
+      const yesButton = new BaseButton({ text: 'YES', onClick: (): void => EVENT_EMITTER.emit(event) });
       const noButton = new BaseButton({ text: 'NO', onClick: (): void => this.closeModal() });
 
       [yesButton, noButton].forEach((button) => button.appendTo(this.modal));
