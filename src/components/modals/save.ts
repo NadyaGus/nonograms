@@ -1,4 +1,4 @@
-import Modal from '@/utils/baseModal';
+import Modal from '@/utils/modal/baseModal';
 import { EVENT_EMITTER } from '@/utils/event-emitter';
 
 export class SaveModal extends Modal {

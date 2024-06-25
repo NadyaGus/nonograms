@@ -1,7 +1,7 @@
 import cross from 'public/cross.svg';
-import { BaseButton } from './baseButton';
-import BaseComponent from './baseComponent';
-import { EVENT_EMITTER } from './event-emitter';
+import { BaseButton } from '../button/baseButton';
+import BaseComponent from '../baseComponent';
+import { EVENT_EMITTER } from '../event-emitter';
 
 import classes from './modal.module.scss';
 
