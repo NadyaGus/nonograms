@@ -40,7 +40,7 @@ export class Header extends BaseComponent {
     const modals = [this.scoreModal, this.saveModal, this.continueModal, this.aboutModal];
     modals.forEach((modal) => {
       const link = new BaseComponent({ tag: 'li', className: classes.link, parent: ul });
-      link.setTextContent(modal.name);
+      link.setTextContent(modal.title);
 
       link.subscribe('openModal', () => modal.openModal());
       link.addListener('click', () => {
