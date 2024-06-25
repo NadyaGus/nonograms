@@ -1,4 +1,4 @@
-@import '../global.module.scss';
+@import '../global.module';
 
 .modalBackground {
   position: fixed;
@@ -24,12 +24,50 @@
 .modal {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   min-width: 50%;
   min-height: 20%;
-  color: $color-secondary ;
-  background-color: $color-bg;
 
-  p {
-    font-size: 1.5rem;
+  color: $color-secondary ;
+
+  background-color: $color-bg;
+  border-radius: 3rem;
+
+  .title {
+    width: 100%;
+    text-align: center;
   }
+
+  .text {
+    max-width: 28rem;
+    margin: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .closeButton {
+    margin: 0;
+    padding: 0;
+    background-color: $color-bg;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  padding: 1rem 2rem;
+}
+
+.wrapperButtons {
+  display: flex;
+  margin: 1rem;
 }

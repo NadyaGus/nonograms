@@ -12,7 +12,7 @@ const MODAL_TITLE_SAVE = 'SAVE GAME';
 const MODAL_TITLE_CONTINUE = 'CONTINUE LAST GAME';
 const MODAL_TITLE_ABOUT = 'ABOUT';
 
-const MODAL_TEXT_ABOUT = 'ABOUT TEXT';
+const MODAL_TEXT_ABOUT = '';
 const MODAL_TEXT_SAVE = 'Are you sure you want to save your current game? You can only save one game';
 const MODAL_TEXT_CONTINUE = 'Are you sure you want to download the game? Current progress will be lost';
 const MODAL_TEXT_SCORE = 'Last five results';

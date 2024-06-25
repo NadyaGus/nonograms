@@ -61,10 +61,13 @@ export default class BaseComponent {
     this.elem.textContent = text;
   }
 
-  public addImage(src: string, className: string, parent: BaseComponent): BaseComponent {
+  public addImage(src: string, parent: BaseComponent, className?: string): BaseComponent {
     const img = document.createElement('img');
     img.src = src;
-    img.className = className;
+
+    if (className) {
+      img.className = className;
+    }
 
     parent.elem.append(img);
     this.img = img;

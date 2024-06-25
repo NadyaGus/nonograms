@@ -1,23 +1,26 @@
-@import '../global.module.scss';
+@import '../global.module';
 
 .button {
   width: max-content;
   margin: 0.5rem;
   padding: 0.5rem 1rem;
+
   font-size: 1rem;
   color: $color-text;
+
+  background-color: $color-secondary;
   border: none;
   border-radius: 1rem;
-  background-color: $color-secondary;
+
   transition: 0.3s;
 
   &:hover {
-    background-color: $color-secondary-hover;
     cursor: pointer;
+    background-color: $color-secondary-hover;
   }
 
   &:disabled {
-    opacity: 0.6;
     cursor: auto;
+    opacity: 0.6;
   }
 }

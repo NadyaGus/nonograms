@@ -55,7 +55,7 @@ export class Header extends BaseComponent {
   }
 
   private addBurger(): void {
-    const icon = this.addImage(burger, classes.burger!, this);
+    const icon = this.addImage(burger, this, classes.burger);
     icon.addListener('click', () => icon.toggleClass(classes.open!));
   }
 }
