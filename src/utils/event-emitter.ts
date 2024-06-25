@@ -1,7 +1,7 @@
 type CallBack = () => void;
 
 export class EventEmitter {
-  private emitter: { [key: string]: Set<CallBack> };
+  public emitter: { [key: string]: Set<CallBack> };
 
   constructor() {
     this.emitter = {};

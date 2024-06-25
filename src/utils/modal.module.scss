@@ -26,5 +26,10 @@
   flex-direction: column;
   min-width: 50%;
   min-height: 20%;
+  color: $color-secondary ;
   background-color: $color-bg;
+
+  p {
+    font-size: 1.5rem;
+  }
 }
