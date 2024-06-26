@@ -4,6 +4,7 @@ import { ScoreModal } from '@/components/modals/score';
 import { SaveModal } from '@/components/modals/save';
 import BaseComponent from '@/utils/baseComponent';
 import { Header } from '@/components/header/header';
+import { LevelControls } from '@/components/game-controls/level-controls';
 
 import classes from './app.module.scss';
 
@@ -26,7 +27,9 @@ export class App extends BaseComponent {
 
   private aboutModal: AboutModal;
 
-  protected header: Header;
+  private header: Header;
+
+  private levelControls: LevelControls;
 
   constructor() {
     super({ tag: 'div', className: classes.app });
@@ -43,6 +46,10 @@ export class App extends BaseComponent {
     this.aboutModal = new AboutModal(MODAL_TITLE_ABOUT, MODAL_TEXT_ABOUT, true);
     this.aboutModal.appendTo(this);
 
-    this.header = new Header(this, this.scoreModal, this.saveModal, this.continueModal, this.aboutModal);
+    this.header = new Header(this.scoreModal, this.saveModal, this.continueModal, this.aboutModal);
+    this.header.appendTo(this);
+
+    this.levelControls = new LevelControls();
+    this.levelControls.appendTo(this);
   }
 }
