@@ -1,0 +1,17 @@
+@import '../../../global.module.scss';
+
+.wrapper {
+  margin: 0 auto 2rem auto;
+
+  .list {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    transition: 0.3s;
+  }
+
+  &.open .list {
+    z-index: +1;
+    opacity: 1;
+  }
+}

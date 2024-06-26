@@ -2,15 +2,20 @@ import BaseComponent from '@/utils/baseComponent';
 import { BaseButton } from '@/utils/button/baseButton';
 
 import classes from './level-controls.module.scss';
+import { SelectPuzzle } from './select-puzzle/select-puzzle';
 
 export class LevelControls extends BaseComponent {
+  private select: SelectPuzzle;
+
   constructor() {
     super({ tag: 'div', className: classes.controls! });
+    this.select = new SelectPuzzle();
     this.init();
   }
 
   private init(): void {
     this.addLevelChoice();
+    this.select.appendTo(this);
   }
 
   private addLevelChoice(): void {
