@@ -1,3 +1,9 @@
 import BaseComponent from '@/utils/baseComponent';
 
-export class Field extends BaseComponent {}
+import classes from './field.module.scss';
+
+export class Field extends BaseComponent {
+  constructor() {
+    super({ className: classes.field! });
+  }
+}

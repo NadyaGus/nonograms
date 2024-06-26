@@ -5,6 +5,7 @@ import { SaveModal } from '@/components/modals/save';
 import BaseComponent from '@/utils/baseComponent';
 import { Header } from '@/components/header/header';
 import { LevelControls } from '@/components/game-controls/level-controls';
+import { Field } from '@/components/field/field';
 
 import classes from './app.module.scss';
 
@@ -31,6 +32,8 @@ export class App extends BaseComponent {
 
   private levelControls: LevelControls;
 
+  private field: Field;
+
   constructor() {
     super({ tag: 'div', className: classes.app });
 
@@ -51,5 +54,8 @@ export class App extends BaseComponent {
 
     this.levelControls = new LevelControls();
     this.levelControls.appendTo(this);
+
+    this.field = new Field();
+    this.field.appendTo(this);
   }
 }
