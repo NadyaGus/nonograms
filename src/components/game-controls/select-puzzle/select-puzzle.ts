@@ -1,5 +1,6 @@
 import BaseComponent from '@/utils/baseComponent';
 import { BaseButton } from '@/utils/button/baseButton';
+import { EVENT_EMITTER } from '@/utils/event-emitter';
 
 import puzzleJSON from '@/utils/picturs.json';
 import classes from './select-puzzle.module.scss';
@@ -9,16 +10,29 @@ export class SelectPuzzle extends BaseComponent {
 
   private puzzleList: string[];
 
+  private list: BaseComponent;
+
   constructor() {
     super({ className: classes.wrapper! });
     this.puzzle = this.getCurrentPuzzleName('0');
     this.puzzleList = this.getPuzzlesNames('small');
-    this.init();
-  }
 
-  private init(): void {
     this.addSelect();
-    this.addSelectList();
+
+    this.list = this.addSelectList();
+
+    EVENT_EMITTER.subscribe(`set-small-difficulty`, () => {
+      this.getPuzzlesNames('small');
+      this.addSelectList();
+    });
+    EVENT_EMITTER.subscribe(`set-medium-difficulty`, () => {
+      this.getPuzzlesNames('medium');
+      this.addSelectList();
+    });
+    EVENT_EMITTER.subscribe(`set-large-difficulty`, () => {
+      this.getPuzzlesNames('large');
+      this.addSelectList();
+    });
   }
 
   private addSelect(): void {
@@ -30,15 +44,27 @@ export class SelectPuzzle extends BaseComponent {
     select.appendTo(this);
   }
 
-  private addSelectList(): void {
-    const list = new BaseComponent({ tag: 'ul', className: classes.list });
+  private addSelectList(): BaseComponent {
+    if (this.list) {
+      this.removeSelectList();
+    }
 
-    this.puzzleList.forEach((itemName) => {
-      const elem = new BaseComponent({ tag: 'li', parent: list });
+    this.list = new BaseComponent({ tag: 'ul', className: classes.list });
+
+    this.puzzleList.map((itemName) => {
+      const elem = new BaseComponent({ tag: 'li', parent: this.list });
       elem.setTextContent(itemName);
+
+      return elem;
     });
 
-    list.appendTo(this);
+    this.list.appendTo(this);
+
+    return this.list;
+  }
+
+  private removeSelectList(): void {
+    this.list.remove();
   }
 
   private getCurrentPuzzleName(id: string): string {
@@ -54,6 +80,8 @@ export class SelectPuzzle extends BaseComponent {
 
     const levelsName = levels.map((level) => level.name);
     this.puzzleList = levelsName;
+
+    console.log(levelsName);
 
     return levelsName;
   }
