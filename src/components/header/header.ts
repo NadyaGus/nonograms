@@ -18,21 +18,14 @@ export class Header extends BaseComponent {
 
   private aboutModal: AboutModal;
 
-  constructor(
-    parent: BaseComponent,
-    scoreModal: ScoreModal,
-    saveModal: SaveModal,
-    continueModal: ContinueModal,
-    aboutModal: AboutModal,
-  ) {
-    super({ tag: 'nav', className: classes.header, parent });
+  constructor(scoreModal: ScoreModal, saveModal: SaveModal, continueModal: ContinueModal, aboutModal: AboutModal) {
+    super({ tag: 'nav', className: classes.header });
     this.scoreModal = scoreModal;
     this.saveModal = saveModal;
     this.continueModal = continueModal;
     this.aboutModal = aboutModal;
 
     this.init();
-    this.appendTo(parent);
   }
 
   private init(): void {

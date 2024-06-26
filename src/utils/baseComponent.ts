@@ -1,5 +1,5 @@
 type Props = {
-  tag: string;
+  tag?: string;
   className?: string;
   parent?: BaseComponent;
 };
@@ -9,11 +9,11 @@ export default class BaseComponent {
 
   public img?: HTMLImageElement;
 
-  constructor(props: Props) {
-    const elem = document.createElement(props.tag);
+  constructor({ tag = 'div', className, parent }: Props) {
+    const elem = document.createElement(tag);
     this.elem = elem;
-    elem.className = props.className || '';
-    this.appendTo(props.parent);
+    elem.className = className || '';
+    this.appendTo(parent);
   }
 
   public appendTo(parent: BaseComponent | HTMLElement | undefined): void {
