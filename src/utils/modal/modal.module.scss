@@ -1,4 +1,4 @@
-@import '../../global.module.scss';
+@import '../../global.module';
 
 .modalBackground {
   position: fixed;
@@ -33,7 +33,7 @@
   color: $color-secondary ;
 
   background-color: $color-bg;
-  border-radius: 3rem;
+  border-radius: $border-radius-l;
 
   .title {
     width: 100%;
